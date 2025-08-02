@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>KL Bus Tracker</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f8f8f8;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #b91d1d;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+    header img {
+      height: 60px;
+      margin-bottom: 10px;
+    }
+    main {
+      max-width: 600px;
+      margin: 30px auto;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+    }
+    select {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+    .bus {
+      border: 1px solid #ccc;
+      padding: 15px;
+      margin-bottom: 10px;
+      border-radius: 8px;
+      background: #f0f0f0;
+    }
+    .bus h3 {
+      margin: 0 0 10px 0;
+      color: #b91d1d;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <img src="kluh.jpg" alt="KL University Logo">
+
+
+    <h1>KL Bus Tracker</h1>
+    <p>Select your city to view available buses</p>
+  </header>
+
+  <main>
+    <label for="city">Choose City:</label>
+    <select id="city" onchange="showBuses()">
+      <option value="">-- Select --</option>
+      <option value="vijayawada">Vijayawada</option>
+      <option value="hyderabad">Hyderabad</option>
+    </select>
+
+    <div id="busList"></div>
+  </main>
+
+  <footer>
+    &copy; 2025 KL University Transport
+  </footer>
+
+  <script>
+    function showBuses() {
+      const city = document.getElementById("city").value;
+      const busList = document.getElementById("busList");
+      let html = "";
+
+      if (city === "vijayawada") {
+        html += `
+          <div class="bus">
+            <h3>Bus VJ-01</h3>
+            <p>Status: At Benz Circle</p>
+            <p>ETA to campus: 10 minutes</p>
+          </div>
+          <div class="bus">
+            <h3>Bus VJ-02</h3>
+            <p>Status: Left Mangalagiri</p>
+            <p>ETA to campus: 5 minutes</p>
+          </div>
+        `;
+      } else if (city === "hyderabad") {
+        html += `
+          <div class="bus">
+            <h3>Bus HY-01</h3>
+            <p>Status: Near LB Nagar</p>
+            <p>ETA to campus: 20 minutes</p>
+          </div>
+          <div class="bus">
+            <h3>Bus HY-02</h3>
+            <p>Status: Departed Ameerpet</p>
+            <p>ETA to campus: 30 minutes</p>
+          </div>
+        `;
+      }
+
+      busList.innerHTML = html;
+    }
+  </script>
+
+</body>
+</html>
